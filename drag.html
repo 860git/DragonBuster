@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading Animation</title>
+    <style>
+        #loader {
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            position: relative;
+            margin: 100px auto;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <div class="dot" id="dot1"></div>
+        <div class="dot" id="dot2"></div>
+        <div class="dot" id="dot3"></div>
+    </div>
+
+    <script>
+        (function() {
+            var dot1 = document.getElementById('dot1');
+            var dot2 = document.getElementById('dot2');
+            var dot3 = document.getElementById('dot3');
+            var angle = 0;
+
+            function animate() {
+                angle += 5;
+                var radius = 20;
+                dot1.style.left = 20 + Math.cos((angle) * Math.PI / 180) * radius + 'px';
+                dot1.style.top = 20 + Math.sin((angle) * Math.PI / 180) * radius + 'px';
+
+                dot2.style.left = 20 + Math.cos((angle + 120) * Math.PI / 180) * radius + 'px';
+                dot2.style.top = 20 + Math.sin((angle + 120) * Math.PI / 180) * radius + 'px';
+
+                dot3.style.left = 20 + Math.cos((angle + 240) * Math.PI / 180) * radius + 'px';
+                dot3.style.top = 20 + Math.sin((angle + 240) * Math.PI / 180) * radius + 'px';
+
+                setTimeout(animate, 50);
+            }
+
+            animate();
+        })();
+    </script>
+</body>
+</html>
